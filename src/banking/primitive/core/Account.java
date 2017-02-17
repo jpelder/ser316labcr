@@ -9,7 +9,7 @@ public abstract class Account implements java.io.Serializable {
 
     protected float balance = 0.0F;
     protected String name;
-    private State state;
+    
 
     protected Account(String n) {
         name = n;
@@ -73,4 +73,5 @@ public abstract class Account implements java.io.Serializable {
         return "Account " + name + " has $" + balance + "and is " + getState()
                 + "\n";
     }
+	private State state;
 }
