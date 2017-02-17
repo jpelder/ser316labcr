@@ -30,13 +30,15 @@ public abstract class Account implements java.io.Serializable {
 
     /**
      * @return balance in the Account
+     * removed the extra decimal places
      */
     public final float getBalance() {
-        return balance;
+    	return ((float)((int)(balance * 100)) / 100);
+
     }
 
     /**
-     * Adds money to an account. May not be done if the account is CLOSED
+     * Adds money to an account. May not be done if the account is CLOSED!
      * 
      * @param parameter
      *            amount is a deposit and must be > 0
@@ -69,6 +71,9 @@ public abstract class Account implements java.io.Serializable {
         state = s;
     }
 
+    /**
+     * toString override to easily check facts about the object
+     */
     public String toString() {
         return "Account " + name + " has $" + balance + "and is " + getState()
                 + "\n";

@@ -2,10 +2,20 @@ package banking.primitive.core;
 
 public class Savings extends Account {
 
+	/**
+	 * Single argument constructor
+	 * @param name
+	 */
 	public Savings(String name) {
 		super(name);
 	}
 
+	/**
+	 * Constructor with more arguments
+	 * @param name
+	 * @param balance
+	 * @throws IllegalArgumentException
+	 */
 	public Savings(String name, float balance) throws IllegalArgumentException {
 		super(name, balance);
 	}
@@ -14,7 +24,7 @@ public class Savings extends Account {
 	 * A deposit comes with a fee of 50 cents per deposit
 	 */
 	public boolean deposit(float amount) {
-		if (getState() != State.CLOSED && amount > 0.0f) {
+		if (getState() != State.CLOSED && amount > 0.0f && (amount == ((float)((int)(amount*100))/100))) {
 			balance = balance + amount - 0.50F;
 			if (balance >= 0.0f) {
 				setState(State.OPEN);
@@ -29,7 +39,7 @@ public class Savings extends Account {
 	 * An account whose balance dips below 0 is in an OVERDRAWN state
 	 */
 	public boolean withdraw(float amount) {
-		if (getState() == State.OPEN && amount > 0.0f) {
+		if (getState() == State.OPEN && amount > 0.0f && (amount == ((float)((int)(amount*100))/100))) {
 			balance = balance - amount;
 			numWithdraws++;
 			if (numWithdraws > 3)
@@ -45,6 +55,9 @@ public class Savings extends Account {
 	
 	public String getType() { return "Checking"; }
 
+	/**
+	 * toString() method for easy tracing
+	 */
 	public String toString() {
 		return "Savings: " + getName() + ": " + getBalance();
 	}

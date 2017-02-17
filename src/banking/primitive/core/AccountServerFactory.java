@@ -5,6 +5,9 @@ public class AccountServerFactory {
 
 	protected static AccountServerFactory singleton = null;
 
+	/**
+	 * Constructor - default (explicit)
+	 */
 	protected AccountServerFactory() {
 
 	}
@@ -17,6 +20,10 @@ public class AccountServerFactory {
 		return singleton;
 	}
 
+	/**
+	 * Check the instance of the AccountServer
+	 * @return
+	 */
 	public AccountServer lookup() {
 		return new ServerSolution();
 	}

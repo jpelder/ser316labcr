@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 
 /**
  * main method for running the program.
+ * Aditya: Before running the code make sure that my.properties is present in commandLine arguments.
+ * To do right click on Main -> Run As -> Run configurations -> Arguments. add my.properties in the text box.
  * @author kevinagary
  *
  */
@@ -21,7 +23,10 @@ final class Main {
 	 */
 	public static void main(final String[] args) throws Exception {
 
+		
 		if (args.length != 1) {
+			//Alert User what file must be in the command line argument to properly run program (my.properties)
+			System.out.println("Use 'my.properties' as the only (and mandatory) command line argument.");
 			System.out.println("Usage: java FormMain <property file>");
 			System.exit(1);
 		}
