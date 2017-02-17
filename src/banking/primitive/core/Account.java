@@ -30,6 +30,7 @@ public abstract class Account implements java.io.Serializable {
 
     /**
      * @return balance in the Account
+     * removed the extra decimal places
      */
     public final float getBalance() {
     	return ((float)((int)(balance * 100)) / 100);
