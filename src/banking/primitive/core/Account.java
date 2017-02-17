@@ -37,7 +37,7 @@ public abstract class Account implements java.io.Serializable {
     }
 
     /**
-     * Adds money to an account. May not be done if the account is CLOSED
+     * Adds money to an account. May not be done if the account is CLOSED!
      * 
      * @param parameter
      *            amount is a deposit and must be > 0
