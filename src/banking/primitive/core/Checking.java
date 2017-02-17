@@ -2,10 +2,6 @@ package banking.primitive.core;
 
 public class Checking extends Account {
 
-
-	private static final long serialVersionUID = 11L;
-	private int numWithdraws = 0;
-	
 	/**
 	 * Constructor to invoke superclass constructor
 	 * @param name
@@ -57,8 +53,9 @@ public class Checking extends Account {
 			if ((getState() == State.OPEN || (getState() == State.OVERDRAWN && balance > -100.0f)) && (amount == ((float)((int)(amount*100))/100))) {
 				balance = balance - amount;
 				numWithdraws++;
-				if (numWithdraws > 10)
+				if (numWithdraws > 10){ 
 					balance = balance - 2.0f;
+				}
 				if (balance < 0.0f) {
 					setState(State.OVERDRAWN);
 				}
