@@ -154,23 +154,15 @@ class MainFrame extends JFrame {
 			String name = nameField.getText();
 			String balance = balanceField.getText();
 
-			if (balance.equals(""))
-			{
+			if (balance.equals("")){
 				balance = "0";
 			}
 			
-			if ((balanceField.getText().equals("")) && balance.equals("0"))
-			{
-
-			if (myServer.newAccount(type, name, Float.parseFloat(balance))){
-				JOptionPane.showMessageDialog(null, "Account created successfully");
-			} 
-			else {
-
+			if ((balanceField.getText().equals("")) && balance.equals("0")){
 				JOptionPane.showMessageDialog(null, "Account not created!");
 			}
-			else
-			{
+
+			else{
 				if (myServer.newAccount(type, name, Float.parseFloat(balance))) {
 					JOptionPane.showMessageDialog(null, "Account created successfully");
 				} else {
@@ -178,6 +170,7 @@ class MainFrame extends JFrame {
 				}
 			}
 		}
+		
 	}
 	
 	// Complete a handler for new account button
