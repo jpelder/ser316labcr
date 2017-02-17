@@ -137,7 +137,7 @@ class MainFrame extends JFrame {
 				balance = "0";
 			}
 			
-			if ((balanceField.getText().equals("")) && balance.equals("0"))
+			if ((balanceField.getText().equals("")) && balance == ("0"))
 			{
 				JOptionPane.showMessageDialog(null, "Account not created!");
 			}
