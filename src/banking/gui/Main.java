@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 
 /**
  * main method for running the program.
+ * Aditya: Before running the code make sure that my.properties is present in commandLine arguments.
+ * To do right click on Main -> Run As -> Run configurations -> Arguments. add my.properties in the text box.
  * @author kevinagary
  *
  */
