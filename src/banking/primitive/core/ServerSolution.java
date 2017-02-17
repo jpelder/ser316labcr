@@ -14,6 +14,9 @@ class ServerSolution implements AccountServer {
 
 	Map<String,Account> accountMap = null;
 
+	/**
+	 * Constructor with no arguments
+	 */
 	public ServerSolution() {
 		accountMap = new HashMap<String,Account>();
 		File file = new File(fileName);
@@ -31,10 +34,12 @@ class ServerSolution implements AccountServer {
 						accountMap.put(acc.getName(), acc);
 				}
 			}
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		} finally {
+		} 
+		finally {
 			if (in != null) {
 				try {
 					in.close();
@@ -45,6 +50,14 @@ class ServerSolution implements AccountServer {
 		}
 	}
 	
+	/**
+	 * Method used to throw parameters around to create new accounts
+	 * @param type
+	 * @param name
+	 * @param balance
+	 * @return
+	 * @throws IllegalArgumentException
+	 */
 	private boolean newAccountFactory(String type, String name, float balance)
 		throws IllegalArgumentException {
 		
@@ -54,20 +67,26 @@ class ServerSolution implements AccountServer {
 		if ("Checking".equals(type)) {
 			acc = new Checking(name, balance);
 
-		} else if ("Savings".equals(type)) {
+		} 
+		else if ("Savings".equals(type)) {
 			acc = new Savings(name, balance);
 
-		} else {
+		} 
+		else {
 			throw new IllegalArgumentException("Bad account type:" + type);
 		}
 		try {
 			accountMap.put(acc.getName(), acc);
-		} catch (Exception exc) {
+		} 
+		catch (Exception exc) {
 			return false;
 		}
 		return true;
 	}
 
+	/**
+	 * Layer of abstraction for creating new accounts
+	 */
 	public boolean newAccount(String type, String name, float balance) 
 		throws IllegalArgumentException {
 		
@@ -76,6 +95,9 @@ class ServerSolution implements AccountServer {
 		return newAccountFactory(type, name, balance);
 	}
 	
+	/**
+	 * Process to close accounts
+	 */
 	public boolean closeAccount(String name) {
 		Account acc = accountMap.get(name);
 		if (acc == null) {
@@ -104,6 +126,9 @@ class ServerSolution implements AccountServer {
 		return result;
 	}
 	
+	/**
+	 * Process to save accounts
+	 */
 	public void saveAccounts() throws IOException {
 		ObjectOutputStream out = null; 
 		try {
@@ -113,18 +138,20 @@ class ServerSolution implements AccountServer {
 			for (int i=0; i < accountMap.size(); i++) {
 				out.writeObject(accountMap.get(i));
 			}
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			e.printStackTrace();
 			throw new IOException("Could not write file:" + fileName);
-		} finally {
+		} 
+		finally {
 			if (out != null) {
 				try {
 					out.close();
-				} catch (Throwable t) {
+				} 
+				catch (Throwable t) {
 					t.printStackTrace();
 				}
 			}
 		}
 	}
-
 }

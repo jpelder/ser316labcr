@@ -32,7 +32,7 @@ public abstract class Account implements java.io.Serializable {
      * @return balance in the Account
      */
     public final float getBalance() {
-        return balance;
+    	return ((float)((int)(balance * 100)) / 100);
     }
 
     /**
@@ -69,6 +69,9 @@ public abstract class Account implements java.io.Serializable {
         state = s;
     }
 
+    /**
+     * toString override to easily check facts about the object
+     */
     public String toString() {
         return "Account " + name + " has $" + balance + "and is " + getState()
                 + "\n";
