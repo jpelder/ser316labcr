@@ -21,7 +21,10 @@ final class Main {
 	 */
 	public static void main(final String[] args) throws Exception {
 
+		
 		if (args.length != 1) {
+			//Alert User what file must be in the command line argument to properly run program (my.properties)
+			System.out.println("Use 'my.properties' as the only (and mandatory) command line argument.");
 			System.out.println("Usage: java FormMain <property file>");
 			System.exit(1);
 		}

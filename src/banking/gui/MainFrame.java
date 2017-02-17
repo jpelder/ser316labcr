@@ -1,3 +1,6 @@
+/**
+ * GUI file
+ */
 package banking.gui;
 
 import banking.primitive.core.Account;
@@ -11,6 +14,11 @@ import java.awt.Container;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * Class to create the GUI componenets of the program
+ * @author 
+ *
+ */
 @SuppressWarnings("serial")
 class MainFrame extends JFrame {
 	AccountServer	myServer;
@@ -27,6 +35,11 @@ class MainFrame extends JFrame {
 	JButton			displayAccountsButton;
 	JButton			displayODAccountsButton;
 
+	/**
+	 * Constructor
+	 * @param propertyFile
+	 * @throws IOException
+	 */
 	public MainFrame(String propertyFile) throws IOException {
 
 		//** initialize myServer
@@ -46,7 +59,9 @@ class MainFrame extends JFrame {
 		constructForm();
 	}
 
-	
+	/**
+	 * helper function to initialize GUI componenets
+	 */
 	private void constructForm() {
 		//*** Make these read from properties
 		typeLabel		= new JLabel(props.getProperty("TypeLabel"));
@@ -108,6 +123,9 @@ class MainFrame extends JFrame {
 	}
 
 	class DisplayHandler implements ActionListener {
+		/**
+		 * Handle list accounts button
+		 */
 		public void actionPerformed(ActionEvent e) {
 			List<Account> accounts = null;
 			if (e.getSource() == displayAccountsButton) {
@@ -128,14 +146,18 @@ class MainFrame extends JFrame {
 
 	// Complete a handler for new account button
 	class NewAccountHandler implements ActionListener {
+		/**
+		 * Handle new account button
+		 */
 		public void actionPerformed(ActionEvent e) {
 			String type = typeOptions.getSelectedItem().toString();
 			String name = nameField.getText();
 			String balance = balanceField.getText();
 
-			if (myServer.newAccount(type, name, Float.parseFloat(balance))) {
+			if (myServer.newAccount(type, name, Float.parseFloat(balance))){
 				JOptionPane.showMessageDialog(null, "Account created successfully");
-			} else {
+			} 
+			else {
 				JOptionPane.showMessageDialog(null, "Account not created!");
 			}
 		}
@@ -143,6 +165,9 @@ class MainFrame extends JFrame {
 	
 	// Complete a handler for new account button
 	class SaveAccountsHandler implements ActionListener {
+		/**
+		 * Handle save accounts
+		 */
 		public void actionPerformed(ActionEvent e) {
 			try {
 				myServer.saveAccounts();
@@ -155,6 +180,9 @@ class MainFrame extends JFrame {
 
 	// Complete a handler for deposit button
 	class DepositHandler implements ActionListener {
+		/**
+		 * Handle deposit button
+		 */
 		public void actionPerformed(ActionEvent e) {
 			String name = nameField.getText();
 			String balance = balanceField.getText();
@@ -168,6 +196,9 @@ class MainFrame extends JFrame {
 	}
 	// Complete a handler for deposit button
 	class WithdrawHandler implements ActionListener {
+		/**
+		 * Handle withdraw button
+		 */
 		public void actionPerformed(ActionEvent e) {
 			String name = nameField.getText();
 			String balance = balanceField.getText();
@@ -184,6 +215,9 @@ class MainFrame extends JFrame {
 	//** (System.exit(1)) on windowClosing event
 
 	static class FrameHandler extends WindowAdapter {
+		/**
+		 * Handle closing actions
+		 */
 		public void windowClosing(WindowEvent e) {
 
 			System.exit(0);
