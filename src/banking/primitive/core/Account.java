@@ -34,6 +34,7 @@ public abstract class Account implements java.io.Serializable {
      */
     public final float getBalance() {
     	return ((float)((int)(balance * 100)) / 100);
+
     }
 
     /**
